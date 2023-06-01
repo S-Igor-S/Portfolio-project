@@ -5,14 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HomeSlide extends Model
+class Migrate extends Model
 {
-    protected $fillable = [
-        'title',
-        'short_title',
-        'home_slide',
-        'video_url',
-    ];
-
     use HasFactory;
 }
