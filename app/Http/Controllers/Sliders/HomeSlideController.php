@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Sliders;
 
 use App\Http\Controllers\Controller;
 use App\Models\HomeSlide;
@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
-class HomeSliderController extends Controller
+class HomeSlideController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
      */
-    public function getHomeSlider(): View|Application|Factory|ContractsFoundation
+    public function getHomeSlide(): View|Application|Factory|ContractsFoundation
     {
         $id       = Auth::user()->id;
         $userData = User::find($id);
@@ -32,16 +32,18 @@ class HomeSliderController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function updateSlider(Request $request): RedirectResponse
+    public function updateHomeSlide(Request $request): RedirectResponse
     {
         $slideId = $request->id;
 
         if ($request->file('home_slide')) {
             $image = $request->file('home_slide');
             $dir = 'upload/home_slide/';
+
             if (!is_dir(public_path($dir))) {
                 mkdir(public_path($dir));
             }
+
             $name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(636,852)->save($dir . $name);
             $savePath = $dir . $name;
@@ -54,7 +56,7 @@ class HomeSliderController extends Controller
             ]);
             $notification = array(
                 'message' => 'Home Slide Updated with Image Successfully',
-                'alert-type' => 'success'
+                'alert_type' => 'success'
             );
         } else{
             HomeSlide::findOrFail($slideId)->update([
@@ -65,7 +67,7 @@ class HomeSliderController extends Controller
 
             $notification = array(
                 'message' => 'Home Slide Updated without Image Successfully',
-                'alert-type' => 'success'
+                'alert_type' => 'success'
             );
         }
 

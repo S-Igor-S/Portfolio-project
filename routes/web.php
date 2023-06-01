@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Sliders\AboutSlideController;
+use App\Http\Controllers\Sliders\HomeSlideController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Sliders\PortfolioSlideController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +22,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
+});
+
+Route::controller(AboutController::class)->group(function () {
+    Route::get('/about', 'index')->name('about');
 });
 
 Route::middleware('auth')->group(function () {
@@ -37,9 +44,30 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('/update/password', 'UpdatePassword')->name('dashboard.update.password');
 });
 
-Route::controller(HomeSliderController::class)->group(function () {
-    Route::get('/home/slide', 'getHomeSlider')->name('home.slide');
-    Route::post('/update/slider', 'updateSlider')->name('update.slider');
+Route::controller(HomeSlideController::class)->group(function () {
+    Route::get('/home/slide', 'getHomeSlide')->name('home.slide');
+    Route::post('/update/slider', 'updateHomeSlide')->name('update.slider');
+});
+
+Route::controller(AboutSlideController::class)->group(function () {
+    Route::get('/about/slide', 'getAboutSlide')->name('about.slide');
+    Route::post('/about/update/slide', 'updateAbout')->name('about.update.slide');
+    Route::get('/about/multiimage', 'getAboutSlideMultiImage')->name('about.multiimage');
+    Route::get('about/multiimage/all', 'getAllMultiImage')->name('about.multiimage.all');
+    Route::post('/about/insert/multiimage', 'insertMultiImage')->name('about.insert.multiimage');
+    Route::get('/about/edit/multiimage/{id}', 'editMultiImage')->name('about.edit.multiimage');
+    Route::post('/about/update/multiimage', 'updateMultiImage')->name('about.update.multiimage');
+    Route::get('/about/delete/multiimage/{id}', 'deleteMultiImage')->name('about.delete.multiimage');
+});
+
+Route::controller(PortfolioSlideController::class)->group(function () {
+    Route::get('/portfolio/all', 'getAllPortfolio')->name('portfolio.all');
+    Route::get('/portfolio/add', 'addPortfolio')->name('portfolio.add');
+    Route::post('/portfolio/save', 'savePortfolio')->name('portfolio.save');
+    Route::get('/portfolio/edit/{id}', 'editPortfolio')->name('portfolio.edit');
+    Route::post('/portfolio/update', 'updatePortfolio')->name('portfolio.update');
+    Route::get('/portfolio/delete/{id}', 'deletePortfolio')->name('portfolio.delete');
+    Route::get('/portfolio/details/{id}', 'portfolioDetails')->name('portfolio.details');
 });
 
 require __DIR__.'/auth.php';
