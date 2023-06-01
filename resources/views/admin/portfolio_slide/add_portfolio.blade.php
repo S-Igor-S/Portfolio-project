@@ -4,47 +4,53 @@
 
     <div class="page-content">
         <div class="container-fluid">
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Home Slide Page </h4>
-                            <form method="post" action="{{ route('update.slider') }}" enctype="multipart/form-data">
+                            <h4 class="card-title">Protfolio Page </h4>
+                            <form method="post" action="{{ route('portfolio.save') }}" enctype="multipart/form-data">
                                 @csrf
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Name</label>
+                                    <div class="col-sm-10">
+                                        <input name="portfolio_name" class="form-control" type="text" id="example-text-input">
+                                        @error('portfolio_name')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Title </label>
+                                    <div class="col-sm-10">
+                                        <input name="portfolio_title" class="form-control" type="text" id="example-text-input">
+                                        @error('portfolio_title')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Description </label>
+                                    <div class="col-sm-10">
+                                      <textarea id="elm1" name="portfolio_description">
 
-                                <input type="hidden" name="id" value="{{ $homeSlide->id ?? 1 }}">
-
-                                <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
-                                    <div class="col-sm-10">
-                                        <input name="title" class="form-control" type="text" value="{{ $homeSlide->title ?? '' }}"  id="example-text-input">
+                                      </textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Short Title </label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Image </label>
                                     <div class="col-sm-10">
-                                        <input name="short_title" class="form-control" type="text" value="{{ $homeSlide->short_title ?? '' }}"  id="example-text-input">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Video URL </label>
-                                    <div class="col-sm-10">
-                                        <input name="video_url" class="form-control" type="text" value="{{ $homeSlide->video_url ?? '' }}"  id="example-text-input">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Slider Image </label>
-                                    <div class="col-sm-10">
-                                        <input name="home_slide" class="form-control" type="file"  id="image">
+                                        <input name="portfolio_image" class="form-control" type="file" id="image">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
                                     <div class="col-sm-10">
-                                        <img id="showImage" class="rounded avatar-lg" src="{{ !empty($homeSlide->home_slide) ? url( $homeSlide->home_slide):url('upload/default_image.jpg') }}" alt="Card image cap">
+                                        <img id="showImage" class="rounded avatar-lg" src="{{ url('upload/default_image.jpg') }}" alt="Card image cap">
                                     </div>
                                 </div>
-                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Update Slide">
+                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Insert Protfolio Data">
                             </form>
                         </div>
                     </div>
@@ -52,7 +58,6 @@
             </div>
         </div>
     </div>
-
     <script type="text/javascript">
         $(document).ready(function(){
             $('#image').change(function(e){
@@ -64,5 +69,4 @@
             });
         });
     </script>
-
 @endsection
