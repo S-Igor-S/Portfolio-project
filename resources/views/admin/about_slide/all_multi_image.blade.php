@@ -19,7 +19,6 @@
                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                 <tr>
-                                    <th>Sl</th>
                                     <th>About Multi Image</th>
                                     <th>Action</th>
                                 </thead>

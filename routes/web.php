@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Sliders\AboutSlideController;
+use App\Http\Controllers\Sliders\BlogAdminController;
+use App\Http\Controllers\Sliders\BlogCategoryController;
 use App\Http\Controllers\Sliders\HomeSlideController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -68,6 +71,30 @@ Route::controller(PortfolioSlideController::class)->group(function () {
     Route::post('/portfolio/update', 'updatePortfolio')->name('portfolio.update');
     Route::get('/portfolio/delete/{id}', 'deletePortfolio')->name('portfolio.delete');
     Route::get('/portfolio/details/{id}', 'portfolioDetails')->name('portfolio.details');
+});
+
+Route::controller(BlogCategoryController::class)->group(function () {
+    Route::get('blog/category/all', 'getAllBlogCategories')->name('blog.category.all');
+    Route::get('/blog/category/add', 'addBlogCategory')->name('blog.category.add');
+    Route::post('/blog/category/save', 'saveBlogCategory')->name('blog.category.save');
+    Route::get('/blog/category/edit/{id}', 'editBlogCategory')->name('blog.category.edit');
+    Route::post('/blog/category/update/{id}', 'updateBlogCategory')->name('blog.category.update');
+    Route::get('/blog/category/delete/{id}', 'deleteBlogCategory')->name('blog.category.delete');
+});
+
+Route::controller(BlogAdminController::class)->group(function () {
+    Route::get('/blog/all', 'getAllBlog')->name('blog.all');
+    Route::get('/blog/add', 'addBlog')->name('blog.add');
+    Route::post('/blog/save', 'saveBlog')->name('blog.save');
+    Route::get('/blog/edit/{id}', 'editBlog')->name('blog.edit');
+    Route::post('/blog/update', 'updateBlog')->name('blog.update');
+    Route::get('/blog/delete/{id}', 'deleteBlog')->name('blog.delete');
+});
+
+Route::controller(BlogController::class)->group(function () {
+    Route::get('/blog', 'blog')->name('blog');
+    Route::get('/blog/details/{id}', 'index')->name('blog.details');
+    Route::get('/blog/category/{id}', 'сategory')->name('blog.category');
 });
 
 require __DIR__.'/auth.php';
