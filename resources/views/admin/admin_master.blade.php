@@ -14,6 +14,7 @@
     <link href="{{asset('/backend/assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <link href="{{asset('backend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('/backend/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" >
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
 </head>
@@ -90,6 +91,7 @@
 <script src="{{ asset('backend/assets/js/pages/datatables.init.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="{{ asset('backend/assets/js/index.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
 </body>
 
 </html>
