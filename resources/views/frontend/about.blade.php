@@ -1,5 +1,11 @@
 @extends('frontend.main_master')
+
+@section('title')
+    About | Portfolio Website
+@endsection
+
 @section('main')
+
     <main>
         <section class="breadcrumb__wrap">
             <div class="container custom-container">
