@@ -135,12 +135,4 @@ class PortfolioSlideController extends Controller
 
         return redirect()->back()->with($notification);
     }
-
-    public function portfolioDetails($id)
-    {
-        $portfolio = Portfolio::findOrFail($id);
-
-        return view('frontend.portfolio_details', compact('portfolio'));
-    }
-
 }
