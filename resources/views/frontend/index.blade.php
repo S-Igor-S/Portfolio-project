@@ -1,4 +1,9 @@
 @extends('frontend.main_master')
+
+@section('title')
+    Home | Portfolio Website
+@endsection
+
 @section('main')
     <!-- banner-area -->
     @include('frontend.home.banner')
