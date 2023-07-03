@@ -28,10 +28,10 @@
                                         <td><img src="{{ asset($item->multi_image) }}"
                                                  style="width: 60px; height: 50px;"></td>
                                         <td>
-                                            <a href="{{ route('about.edit.multiimage', $item->id) }}"
+                                            <a href="{{ route('dashboard.about.edit.image', $item->id) }}"
                                                class="btn btn-info sm" title="Edit Data"> <i class="fas fa-edit"></i>
                                             </a>
-                                            <a href="{{ route('about.delete.multiimage',$item->id) }}"
+                                            <a href="{{ route('dashboard.about.delete.image',$item->id) }}"
                                                class="btn btn-danger sm" title="Delete Data" id="delete"> <i
                                                         class="fas fa-trash-alt"></i> </a>
                                         </td>

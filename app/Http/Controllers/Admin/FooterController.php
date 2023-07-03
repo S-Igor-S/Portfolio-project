@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Sliders;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Footer;
@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class FooterAdminController extends Controller
+class FooterController extends Controller
 {
 
     public function footerSetup()

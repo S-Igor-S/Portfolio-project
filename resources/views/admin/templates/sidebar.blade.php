@@ -24,22 +24,22 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
-                        <span>Home Slide Setup</span>
+                        <span>Banner Setup</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('home.slide') }}">Home Slide</a></li>
+                        <li><a href="{{ route('dashboard.banner') }}">Banner</a></li>
                     </ul>
                 </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
-                        <span>About Page Setup</span>
+                        <span>About Setup</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('about.slide') }}">About Page</a></li>
-                        <li><a href="{{ route('about.multiimage') }}">About Multi Image</a></li>
-                        <li><a href="{{ route('about.multiimage.all') }}">All Multi Image</a></li>
+                        <li><a href="{{ route('dashboard.about') }}">About</a></li>
+                        <li><a href="{{ route('dashboard.about.images.add') }}">Add new image</a></li>
+                        <li><a href="{{ route('dashboard.about.images.all') }}">All Multi Image</a></li>
                     </ul>
                 </li>
 
@@ -49,8 +49,8 @@
                         <span>Portfolio Page Setup</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('portfolio.all') }}">All Portfolio</a></li>
-                        <li><a href="{{ route('portfolio.add') }}">Add Portfolio</a></li>
+                        <li><a href="{{ route('dashboard.portfolio.all') }}">All Portfolio</a></li>
+                        <li><a href="{{ route('dashboard.portfolio.add') }}">Add Portfolio</a></li>
 
                     </ul>
                 </li>
@@ -74,8 +74,8 @@
                         <span>Blog Page</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('blog.all') }}">All Blog</a></li>
-                        <li><a href="{{ route('blog.add') }}">Add Blog</a></li>
+                        <li><a href="{{ route('dashboard.blog.all') }}">All Blog</a></li>
+                        <li><a href="{{ route('dashboard.blog.add') }}">Add Blog</a></li>
 
                     </ul>
                 </li>
@@ -86,7 +86,7 @@
                         <span>Footer Page Setup</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('footer.setup') }}">Footer Setup</a></li>
+                        <li><a href="{{ route('dashboard.footer.setup') }}">Footer Setup</a></li>
 
 
                     </ul>
@@ -98,7 +98,7 @@
                         <span>Contact Message </span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('contact.message') }}">Contact Message</a></li>
+                        <li><a href="{{ route('dashboard.contact.message') }}">Contact Message</a></li>
 
 
                     </ul>

@@ -9,22 +9,23 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">About Page </h4>
-                            <form method="post" action="{{ route('about.update.slide') }}" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('dashboard.about.update') }}"
+                                  enctype="multipart/form-data">
                                 @csrf
 
-                                <input type="hidden" name="id" value="{{ $aboutPage->id ?? 1 }}">
+                                <input type="hidden" name="name" value="{{ $templateName }}">
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                                     <div class="col-sm-10">
                                         <input name="title" class="form-control" type="text"
-                                               value="{{ $aboutPage->title ?? '' }}" id="example-text-input">
+                                               value="{{ $elementContent->title ?? '' }}" id="example-text-input">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Short Title </label>
                                     <div class="col-sm-10">
                                         <input name="short_title" class="form-control" type="text"
-                                               value="{{ $aboutPage->short_title ?? '' }}" id="example-text-input">
+                                               value="{{ $elementContent->short_title ?? '' }}" id="example-text-input">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -32,7 +33,7 @@
                                         Description </label>
                                     <div class="col-sm-10">
                                         <textarea required="" name="short_description" class="form-control" rows="5">
-                                            {{ $aboutPage->short_description ?? '' }}
+                                            {{ $elementContent->short_description ?? '' }}
                                         </textarea>
                                     </div>
                                 </div>
@@ -41,21 +42,21 @@
                                         Description </label>
                                     <div class="col-sm-10">
                                       <textarea id="elm1" name="long_description">
-                                          {{ $aboutPage->long_description ?? '' }}
+                                          {{ $elementContent->long_description ?? '' }}
                                       </textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">About Image </label>
                                     <div class="col-sm-10">
-                                        <input name="about_image" class="form-control" type="file" id="image">
+                                        <input name="image" class="form-control" type="file" id="image">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label"> </label>
                                     <div class="col-sm-10">
                                         <img id="showImage" class="rounded avatar-lg"
-                                             src="{{ !empty($aboutPage->about_image) ? url( $aboutPage->about_image) : url('upload/default_image.jpg') }}"
+                                             src="{{ !empty($image) ? url($image) : url('upload/default_image.jpg') }}"
                                              alt="Card image cap">
                                     </div>
                                 </div>
