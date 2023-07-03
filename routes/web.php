@@ -137,7 +137,6 @@ Route::controller(AdminFooterController::class)->group(function () {
 Route::controller(ContactController::class)->group(function () {
     Route::get('/contact', 'index')->name('contact');
     Route::post('/contact/save/message', 'saveMessage')->name('contact.save.message');
-//    Route::get('/contact/message', 'ContactMessage')->name('contact.message');
 });
 
 Route::controller(AdminContactController::class)->group(function () {

@@ -8,16 +8,8 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="index.html" class="waves-effect">
-                        <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">3</span>
+                    <a href="{{ route('dashboard') }}" class="waves-effect">
                         <span>Dashboard</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="calendar.html" class=" waves-effect">
-                        <i class="ri-calendar-2-line"></i>
-                        <span>Calendar</span>
                     </a>
                 </li>
 
@@ -39,7 +31,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('dashboard.about') }}">About</a></li>
                         <li><a href="{{ route('dashboard.about.images.add') }}">Add new image</a></li>
-                        <li><a href="{{ route('dashboard.about.images.all') }}">All Multi Image</a></li>
+                        <li><a href="{{ route('dashboard.about.images.all') }}">All Images</a></li>
                     </ul>
                 </li>
 

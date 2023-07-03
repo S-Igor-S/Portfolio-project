@@ -7,16 +7,16 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Update Multi Image</h4> <br><br>
+                            <h4 class="card-title">Update Image</h4> <br><br>
 
-                            <form method="post" action="{{ route('about.update.multiimage') }}" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('dashboard.about.images.insert') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <input type="hidden" name="id" value="{{ $multiImage->id }}">
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">About Multi Image </label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
                                     <div class="col-sm-10">
-                                        <input name="multi_image" class="form-control" type="file" id="image" >
+                                        <input name="image[]" class="form-control" type="file" id="image" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">

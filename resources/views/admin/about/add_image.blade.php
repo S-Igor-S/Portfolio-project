@@ -7,14 +7,14 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Add Multi Image</h4> <br><br>
+                            <h4 class="card-title">Add Image</h4> <br><br>
                             <form method="post" action="{{ route('dashboard.about.images.insert') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">About Multi Image </label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Image</label>
                                     <div class="col-sm-10">
-                                        <input name="multi_image[]" class="form-control" type="file" id="image" multiple="" >
+                                        <input name="image[]" class="form-control" type="file" id="image" multiple="" >
                                     </div>
                                 </div>
                                 <div class="row mb-3">

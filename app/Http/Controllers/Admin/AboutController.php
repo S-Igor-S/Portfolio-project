@@ -98,7 +98,8 @@ class AboutController extends Controller
 
     public function insertImage(Request $request): RedirectResponse
     {
-        $images = $request->file('multi_image');
+        $images = $request->file('image');
+        $id = $request->get('id');
 
         $dir = 'upload/about_images/';
 
@@ -114,12 +115,12 @@ class AboutController extends Controller
                  ->save($dir.$name);
             $url = $dir.$name;
             MultiImage::updateOrCreate(
-                ['id' => 0],
+                ['id' => $id],
                 ['multi_image' => $url]
             );
         }
         $notification = [
-            'message'    => 'Multi Image Inserted Successfully',
+            'message'    => 'Image Inserted Successfully',
             'alert-type' => 'success',
         ];
 
@@ -136,7 +137,7 @@ class AboutController extends Controller
         $userData      = User::find($id);
         $allMultiImage = MultiImage::all();
 
-        return view('admin.about.all_multi_image',
+        return view('admin.about.all_images',
             compact('allMultiImage'), compact('userData'));
     }
 
@@ -146,7 +147,7 @@ class AboutController extends Controller
         $userData   = User::find($userId);
         $multiImage = MultiImage::findOrFail($id);
 
-        return view('admin.about.edit_multi_image',
+        return view('admin.about.edit_image',
             compact('multiImage'), compact('userData'));
     }
 
