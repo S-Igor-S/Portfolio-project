@@ -20,7 +20,7 @@
 
                         <h4 class="card-title">Blog Page </h4>
 
-                        <form method="post" action="{{ route('blog.save') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('dashboard.blog.save') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Blog Category Name</label>

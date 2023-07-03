@@ -12,7 +12,7 @@
 
                             <h4 class="card-title">Footer Page </h4>
 
-                            <form method="post" action="{{ route('footer.update') }}">
+                            <form method="post" action="{{ route('dashboard.footer.update') }}">
                                 @csrf
 
                                 <input type="hidden" name="id" value="{{ $footer->id }}">

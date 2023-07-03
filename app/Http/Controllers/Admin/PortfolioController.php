@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Sliders;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Portfolio;
@@ -9,25 +9,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
-class PortfolioSlideController extends Controller
+class PortfolioController extends Controller
 {
 
     public function getAllPortfolio()
     {
-        $id        = Auth::user()->id;
-        $userData  = User::find($id);
+        $userId        = Auth::user()->id;
+        $userData  = User::find($userId);
         $portfolio = Portfolio::latest()->get();
 
-        return view('admin.portfolio_slide.all_portfolio', compact('portfolio'),
+        return view('admin.portfolio.index', compact('portfolio'),
             compact('userData'));
     }
 
     public function addPortfolio()
     {
-        $id       = Auth::user()->id;
-        $userData = User::find($id);
+        $userId       = Auth::user()->id;
+        $userData = User::find($userId);
 
-        return view('admin.portfolio_slide.add_portfolio', compact('userData'));
+        return view('admin.portfolio.add_portfolio', compact('userData'));
     }
 
 
@@ -67,7 +67,7 @@ class PortfolioSlideController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()->route('portfolio.all')->with($notification);
+        return redirect()->route('dashboard.portfolio.all')->with($notification);
     }
 
     public function editPortfolio($id)
@@ -77,28 +77,28 @@ class PortfolioSlideController extends Controller
 
         $portfolio = Portfolio::findOrFail($id);
 
-        return view('admin.portfolio_slide.edit_portfolio',
+        return view('admin.portfolio.edit_portfolio',
             compact('portfolio'), compact('userData'));
     }
 
     public function updatePortfolio(Request $request)
     {
-        $portfolio_id = $request->id;
+        $portfolioId = $request->id;
 
         if ($request->file('portfolio_image')) {
             $image    = $request->file('portfolio_image');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            $name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
             Image::make($image)
                  ->resize(1020, 519)
-                 ->save('upload/portfolio/'.$name_gen);
-            $save_url = 'upload/portfolio/'.$name_gen;
+                 ->save('upload/portfolio/'.$name);
+            $savePath = 'upload/portfolio/'.$name;
 
-            Portfolio::findOrFail($portfolio_id)->update([
+            Portfolio::findOrFail($portfolioId)->update([
                 'portfolio_name'        => $request->portfolio_name,
                 'portfolio_title'       => $request->portfolio_title,
                 'portfolio_description' => $request->portfolio_description,
-                'portfolio_image'       => $save_url,
+                'portfolio_image'       => $savePath,
 
             ]);
             $notification = [
@@ -106,7 +106,7 @@ class PortfolioSlideController extends Controller
                 'alert-type' => 'success',
             ];
         } else {
-            Portfolio::findOrFail($portfolio_id)->update([
+            Portfolio::findOrFail($portfolioId)->update([
                 'portfolio_name'        => $request->portfolio_name,
                 'portfolio_title'       => $request->portfolio_title,
                 'portfolio_description' => $request->portfolio_description,
@@ -117,7 +117,7 @@ class PortfolioSlideController extends Controller
             ];
         }
 
-        return redirect()->route('portfolio.all')->with($notification);
+        return redirect()->route('dashboard.portfolio.all')->with($notification);
     }
 
     public function deletePortfolio($id)

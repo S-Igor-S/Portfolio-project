@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Sliders;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
-class BlogAdminController extends Controller
+class BlogController extends Controller
 {
     public function getAllBlog(){
         $userId       = Auth::user()->id;
@@ -52,7 +52,7 @@ class BlogAdminController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('blog.all')->with($notification);
+        return redirect()->route('dashboard.blog.all')->with($notification);
     }
 
     public function editBlog($id){
@@ -103,7 +103,7 @@ class BlogAdminController extends Controller
             );
         }
 
-        return redirect()->route('blog.all')->with($notification);
+        return redirect()->route('dashboard.blog.all')->with($notification);
     }
 
 
