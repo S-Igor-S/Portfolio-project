@@ -8,7 +8,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Add Multi Image</h4> <br><br>
-                            <form method="post" action="{{ route('about.insert.multiimage') }}" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('dashboard.about.images.insert') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row mb-3">

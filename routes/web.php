@@ -5,15 +5,15 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PortfolioController;
-use App\Http\Controllers\Sliders\AboutSlideController;
-use App\Http\Controllers\Sliders\BlogAdminController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Sliders\BlogCategoryController;
-use App\Http\Controllers\Sliders\ContactAdminController;
-use App\Http\Controllers\Sliders\FooterAdminController;
-use App\Http\Controllers\Sliders\HomeSlideController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Sliders\PortfolioSlideController;
+use App\Http\Controllers\Admin\AboutController as AdminAboutController;
+use App\Http\Controllers\Admin\BlogController as AdminBlogController;
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
+use App\Http\Controllers\Admin\FooterController as AdminFooterController;
+use App\Http\Controllers\Admin\PortfolioController as AdminPortfolioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,38 +60,37 @@ Route::controller(AdminController::class)->group(function () {
          ->name('dashboard.update.password');
 });
 
-Route::controller(HomeSlideController::class)->group(function () {
-    Route::get('/home/slide', 'getHomeSlide')->name('home.slide');
-    Route::post('/update/slider', 'updateHomeSlide')->name('update.slider');
+Route::controller(BannerController::class)->group(function () {
+    Route::get('dashboard/banner', 'edit')->name('dashboard.banner');
+    Route::post('dashboard/banner/update', 'update')->name('dashboard.banner.update');
 });
 
-Route::controller(AboutSlideController::class)->group(function () {
-    Route::get('/about/slide', 'getAboutSlide')->name('about.slide');
-    Route::post('/about/update/slide', 'updateAbout')
-         ->name('about.update.slide');
-    Route::get('/about/multiimage', 'getAboutSlideMultiImage')
-         ->name('about.multiimage');
-    Route::get('about/multiimage/all', 'getAllMultiImage')
-         ->name('about.multiimage.all');
-    Route::post('/about/insert/multiimage', 'insertMultiImage')
-         ->name('about.insert.multiimage');
-    Route::get('/about/edit/multiimage/{id}', 'editMultiImage')
-         ->name('about.edit.multiimage');
-    Route::post('/about/update/multiimage', 'updateMultiImage')
-         ->name('about.update.multiimage');
-    Route::get('/about/delete/multiimage/{id}', 'deleteMultiImage')
-         ->name('about.delete.multiimage');
+Route::controller(AdminAboutController::class)->group(function () {
+    Route::get('dashboard/about', 'edit')->name('dashboard.about');
+    Route::post('dashboard/about/update', 'update')
+         ->name('dashboard.about.update');
+    Route::get('dashboard/about/images/add', 'addImage')
+         ->name('dashboard.about.images.add');
+    Route::post('dashboard/about/images/insert', 'insertImage')
+         ->name('dashboard.about.images.insert');
+
+    Route::get('dashboard/about/images/all', 'getImagesList')
+         ->name('dashboard.about.images.all');
+    Route::get('dashboard/about/edit/image/{id}', 'editImage')
+         ->name('dashboard.about.edit.image');
+    Route::get('dashboard/about/about/delete/image/{id}', 'deleteImage')
+         ->name('dashboard.about.delete.image');
 });
 
-Route::controller(PortfolioSlideController::class)->group(function () {
-    Route::get('/portfolio/all', 'getAllPortfolio')->name('portfolio.all');
-    Route::get('/portfolio/add', 'addPortfolio')->name('portfolio.add');
-    Route::post('/portfolio/save', 'savePortfolio')->name('portfolio.save');
-    Route::get('/portfolio/edit/{id}', 'editPortfolio')->name('portfolio.edit');
-    Route::post('/portfolio/update', 'updatePortfolio')
-         ->name('portfolio.update');
-    Route::get('/portfolio/delete/{id}', 'deletePortfolio')
-         ->name('portfolio.delete');
+Route::controller(AdminPortfolioController::class)->group(function () {
+    Route::get('dashboard/portfolio/all', 'getAllPortfolio')->name('dashboard.portfolio.all');
+    Route::get('dashboard/portfolio/add', 'addPortfolio')->name('dashboard.portfolio.add');
+    Route::post('dashboard/portfolio/save', 'savePortfolio')->name('dashboard.portfolio.save');
+    Route::get('dashboard/portfolio/edit/{id}', 'editPortfolio')->name('dashboard.portfolio.edit');
+    Route::post('dashboard/portfolio/update', 'updatePortfolio')
+         ->name('dashboard.portfolio.update');
+    Route::get('dashboard/portfolio/delete/{id}', 'deletePortfolio')
+         ->name('dashboard.portfolio.delete');
 });
 
 Route::controller(PortfolioController::class)->group(function () {
@@ -115,13 +114,13 @@ Route::controller(BlogCategoryController::class)->group(function () {
          ->name('blog.category.delete');
 });
 
-Route::controller(BlogAdminController::class)->group(function () {
-    Route::get('/blog/all', 'getAllBlog')->name('blog.all');
-    Route::get('/blog/add', 'addBlog')->name('blog.add');
-    Route::post('/blog/save', 'saveBlog')->name('blog.save');
-    Route::get('/blog/edit/{id}', 'editBlog')->name('blog.edit');
-    Route::post('/blog/update', 'updateBlog')->name('blog.update');
-    Route::get('/blog/delete/{id}', 'deleteBlog')->name('blog.delete');
+Route::controller(AdminBlogController::class)->group(function () {
+    Route::get('dashboard/blog/all', 'getAllBlog')->name('dashboard.blog.all');
+    Route::get('dashboard/blog/add', 'addBlog')->name('dashboard.blog.add');
+    Route::post('dashboard/blog/save', 'saveBlog')->name('dashboard.blog.save');
+    Route::get('dashboard/blog/edit/{id}', 'editBlog')->name('dashboard.blog.edit');
+    Route::post('dashboard/blog/update', 'updateBlog')->name('dashboard.blog.update');
+    Route::get('dashboard/blog/delete/{id}', 'deleteBlog')->name('dashboard.blog.delete');
 });
 
 Route::controller(BlogController::class)->group(function () {
@@ -130,21 +129,20 @@ Route::controller(BlogController::class)->group(function () {
     Route::get('/blog/category/{id}', 'сategory')->name('blog.category');
 });
 
-Route::controller(FooterAdminController::class)->group(function () {
-    Route::get('/footer/setup', 'footerSetup')->name('footer.setup');
-    Route::post('/footer/update', 'updateFooter')->name('footer.update');
+Route::controller(AdminFooterController::class)->group(function () {
+    Route::get('dashboard/footer/setup', 'footerSetup')->name('dashboard.footer.setup');
+    Route::post('dashboard/footer/update', 'updateFooter')->name('dashboard.footer.update');
 });
 
 Route::controller(ContactController::class)->group(function () {
     Route::get('/contact', 'index')->name('contact');
     Route::post('/contact/save/message', 'saveMessage')->name('contact.save.message');
-    Route::get('/contact/message', 'ContactMessage')->name('contact.message');
-    Route::get('/contact/delete/message/{id}', 'DeleteMessage')->name('contact.delete.message');
+//    Route::get('/contact/message', 'ContactMessage')->name('contact.message');
 });
 
-Route::controller(ContactAdminController::class)->group(function () {
-    Route::get('/contact/message', 'index')->name('contact.message');
-    Route::get('/contact/delete/message/{id}', 'deleteMessage')->name('contact.delete.message');
+Route::controller(AdminContactController::class)->group(function () {
+    Route::get('dashboard/contact/message', 'index')->name('dashboard.contact.message');
+    Route::get('dashboard/contact/delete/message/{id}', 'deleteMessage')->name('dashboard.contact.delete.message');
 });
 
 require __DIR__.'/auth.php';
