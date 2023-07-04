@@ -130,8 +130,8 @@ Route::controller(BlogController::class)->group(function () {
 });
 
 Route::controller(AdminFooterController::class)->group(function () {
-    Route::get('dashboard/footer/setup', 'footerSetup')->name('dashboard.footer.setup');
-    Route::post('dashboard/footer/update', 'updateFooter')->name('dashboard.footer.update');
+    Route::get('dashboard/footer/setup', 'index')->name('dashboard.footer.setup');
+    Route::post('dashboard/footer/update', 'update')->name('dashboard.footer.update');
 });
 
 Route::controller(ContactController::class)->group(function () {

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\About;
 use App\Models\ContentElement;
 use App\Models\MultiImage;
 use App\Models\User;
@@ -21,7 +20,7 @@ class AboutController extends Controller
 
     const TEMPLATE_NAME = 'about';
 
-    public array $removeKeys = ['_token', 'name', 'image'];
+    private string $dir = 'about_images';
 
     /**
      * @return \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\FooterController;
 use App\Models\Contact;
+use App\Models\ContentElement;
 use App\Models\Footer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -12,7 +14,9 @@ class ContactController extends Controller
     public function index()
     {
         $route = Route::current()->getName();
-        $footer = Footer::find(1);
+
+        $footer = ContentElement::where('name', FooterController::TEMPLATE_NAME)->first();
+        $footer->content = json_decode($footer->content);
 
         return view('frontend.contact', compact('footer', 'route'));
     }

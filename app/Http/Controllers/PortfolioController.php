@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\FooterController;
+use App\Models\ContentElement;
 use App\Models\Footer;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
@@ -13,7 +15,10 @@ class PortfolioController extends Controller
     public function index()
     {
         $route     = Route::current()->getName();
-        $footer    = Footer::find(1);
+
+        $footer = ContentElement::where('name', FooterController::TEMPLATE_NAME)->first();
+        $footer->content = json_decode($footer->content);
+
         $portfolio = Portfolio::latest()->get();
 
         return view('frontend.portfolio',
@@ -23,7 +28,10 @@ class PortfolioController extends Controller
     public function portfolioDetails($id)
     {
         $route     = Route::current()->getName();
-        $footer    = Footer::find(1);
+
+        $footer = ContentElement::where('name', FooterController::TEMPLATE_NAME)->first();
+        $footer->content = json_decode($footer->content);
+
         $portfolio = Portfolio::findOrFail($id);
 
         return view('frontend.portfolio_details',

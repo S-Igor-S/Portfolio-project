@@ -15,13 +15,13 @@
                             <form method="post" action="{{ route('dashboard.footer.update') }}">
                                 @csrf
 
-                                <input type="hidden" name="id" value="{{ $footer->id }}">
+                                <input type="hidden" name="name" value="{{ $templateName }}">
 
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Number</label>
                                     <div class="col-sm-10">
                                         <input name="number" class="form-control" type="text"
-                                               value="{{ $footer->number }}" id="example-text-input">
+                                               value="{{ $elementContent->number ?? '' }}" id="example-text-input">
                                     </div>
                                 </div>
 
@@ -31,7 +31,7 @@
                                         Description </label>
                                     <div class="col-sm-10">
                                         <textarea required="" name="short_description" class="form-control" rows="5">
-                                            {{ $footer->short_description }}
+                                            {{ $elementContent->short_description ?? '' }}
                                         </textarea>
                                     </div>
                                 </div>
@@ -39,8 +39,8 @@
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Adress</label>
                                     <div class="col-sm-10">
-                                        <input name="adress" class="form-control" type="text"
-                                               value="{{ $footer->adress }}" id="example-text-input">
+                                        <input name="address" class="form-control" type="text"
+                                               value="{{ $elementContent->address ?? '' }}" id="example-text-input">
                                     </div>
                                 </div>
 
@@ -48,7 +48,7 @@
                                     <label for="example-text-input" class="col-sm-2 col-form-label"> Email</label>
                                     <div class="col-sm-10">
                                         <input name="email" class="form-control" type="email"
-                                               value="{{ $footer->email }}" id="example-text-input">
+                                               value="{{ $elementContent->email ?? '' }}" id="example-text-input">
                                     </div>
                                 </div>
 
@@ -56,7 +56,7 @@
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Facebook</label>
                                     <div class="col-sm-10">
                                         <input name="facebook" class="form-control" type="text"
-                                               value="{{ $footer->facebook }}" id="example-text-input">
+                                               value="{{ $elementContent->facebook ?? '' }}" id="example-text-input">
                                     </div>
                                 </div>
 
@@ -64,7 +64,7 @@
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Twitter</label>
                                     <div class="col-sm-10">
                                         <input name="twitter" class="form-control" type="text"
-                                               value="{{ $footer->twitter }}" id="example-text-input">
+                                               value="{{ $elementContent->twitter ?? '' }}" id="example-text-input">
                                     </div>
                                 </div>
 
@@ -72,7 +72,7 @@
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Copyright</label>
                                     <div class="col-sm-10">
                                         <input name="copyright" class="form-control" type="text"
-                                               value="{{ $footer->copyright }}" id="example-text-input">
+                                               value="{{ $elementContent->copyright ?? '' }}" id="example-text-input">
                                     </div>
                                 </div>
 
