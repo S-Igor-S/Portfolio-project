@@ -42,24 +42,24 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="about__image">
-                            <img src="{{ $aboutPage->about_image }}" alt="">
+                            <img src="{{ $aboutPage->image }}" alt="">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="about__content">
                             <div class="section__title">
                                 <span class="sub-title">01 - About me</span>
-                                <h2 class="title">{{ $aboutPage->title }}</h2>
+                                <h2 class="title">{{ $aboutPage->content->title }}</h2>
                             </div>
                             <div class="about__exp">
                                 <div class="about__exp__icon">
                                     <img src="{{ asset('frontend/assets/img/icons/about_icon.png') }} " alt="">
                                 </div>
                                 <div class="about__exp__content">
-                                    <p><span>{{ $aboutPage->short_title }}</span> </p>
+                                    <p><span>{{ $aboutPage->content->short_title }}</span> </p>
                                 </div>
                             </div>
-                            <p class="desc">{{ $aboutPage->short_description }}</p>
+                            <p class="desc">{{ $aboutPage->content->short_description }}</p>
                             <a href="about.html" class="btn">Download my resume</a>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                                 <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
                                     <p class="desc">
 
-                                        {!! $aboutPage->long_description !!}
+                                        {!! $aboutPage->content->long_description !!}
 
                                     </p>
                                     </li>
